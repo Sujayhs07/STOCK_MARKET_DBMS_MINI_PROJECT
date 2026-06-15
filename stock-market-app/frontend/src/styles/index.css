@@ -1,0 +1,164 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    @apply bg-dark-900 text-slate-200;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-image:
+      radial-gradient(ellipse at 20% 20%, rgba(0, 230, 118, 0.03) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 80%, rgba(0, 212, 255, 0.03) 0%, transparent 50%);
+    min-height: 100vh;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track { background: #070b14; }
+  ::-webkit-scrollbar-thumb {
+    background: #1a2235;
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover { background: #00e676; }
+}
+
+@layer components {
+  .card {
+    @apply bg-dark-800 border border-dark-600 rounded-xl;
+  }
+
+  .card-glass {
+    background: rgba(13, 18, 38, 0.8);
+    backdrop-filter: blur(12px);
+    @apply border border-dark-600 rounded-xl;
+  }
+
+  .btn-primary {
+    @apply bg-brand-green text-dark-900 font-semibold px-4 py-2 rounded-lg
+           hover:bg-opacity-90 transition-all duration-200 font-body text-sm;
+  }
+
+  .btn-danger {
+    @apply bg-brand-red text-white font-semibold px-4 py-2 rounded-lg
+           hover:bg-opacity-90 transition-all duration-200 font-body text-sm;
+  }
+
+  .btn-ghost {
+    @apply bg-dark-600 text-slate-300 font-semibold px-4 py-2 rounded-lg
+           hover:bg-dark-500 transition-all duration-200 font-body text-sm;
+  }
+
+  .input-field {
+    @apply bg-dark-700 border border-dark-600 text-slate-200 rounded-lg px-4 py-2.5
+           focus:outline-none focus:border-brand-green focus:ring-1 focus:ring-brand-green
+           placeholder-slate-500 text-sm transition-all duration-200 w-full;
+  }
+
+  .label {
+    @apply block text-sm font-medium text-slate-400 mb-1.5;
+  }
+
+  .badge-green {
+    @apply inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-mono
+           bg-brand-green bg-opacity-10 text-brand-green border border-brand-green border-opacity-20;
+  }
+
+  .badge-red {
+    @apply inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-mono
+           bg-brand-red bg-opacity-10 text-brand-red border border-brand-red border-opacity-20;
+  }
+
+  .stat-card {
+    @apply card p-5 flex flex-col gap-2;
+  }
+
+  .table-row {
+    @apply border-b border-dark-600 hover:bg-dark-700 transition-colors duration-150;
+  }
+
+  .table-header {
+    @apply text-xs font-medium text-slate-500 uppercase tracking-wider py-3 px-4;
+  }
+
+  .table-cell {
+    @apply py-3.5 px-4 text-sm;
+  }
+
+  .sidebar-link {
+    @apply flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium
+           text-slate-400 hover:text-slate-200 hover:bg-dark-600 transition-all duration-150;
+  }
+
+  .sidebar-link.active {
+    @apply text-brand-green bg-brand-green bg-opacity-10 border border-brand-green border-opacity-20;
+  }
+
+  .section-title {
+    @apply font-display text-xl font-bold text-slate-100;
+  }
+
+  .positive { @apply text-brand-green; }
+  .negative { @apply text-brand-red; }
+
+  .shimmer {
+    background: linear-gradient(90deg, #111827 25%, #1a2235 50%, #111827 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  .price-up {
+    animation: priceUp 0.5s ease;
+  }
+
+  .price-down {
+    animation: priceDown 0.5s ease;
+  }
+
+  @keyframes priceUp {
+    0%, 100% { background: transparent; }
+    50% { background: rgba(0, 230, 118, 0.15); }
+  }
+
+  @keyframes priceDown {
+    0%, 100% { background: transparent; }
+    50% { background: rgba(255, 61, 90, 0.15); }
+  }
+
+  .fade-in {
+    animation: fadeIn 0.4s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .ticker-bar {
+    background: linear-gradient(135deg, #0d1226 0%, #111827 100%);
+    border-bottom: 1px solid #1a2235;
+  }
+}
+
+/* Modal overlay */
+.modal-overlay {
+  background: rgba(7, 11, 20, 0.85);
+  backdrop-filter: blur(4px);
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
